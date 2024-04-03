@@ -1,0 +1,28 @@
+
+
+<!-- <form method="get">
+{{filters.form}}
+<input type="submit" value="search" name="">
+
+</form> -->
+
+<form method="get">
+    <table style="border:1;">
+   
+        <tr>
+          <th>Employee Name</th>
+          <th>Email</th>
+         
+        </tr>
+        {%if data%}
+        {%for n in data%}
+        <tr>
+          <td>{{n.name}}</td>
+          <td>{{n.email}}</td>
+        </tr>
+        {%endfor%}
+        {%else%}
+        <p>No products</p>
+        {%endif%}
+      </table>
+</form>

@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+    
+            * {
+        box-sizing: border-box;
+      }
+
+      /* Create a column layout with Flexbox */
+      .row {
+        display: flex;
+      }
+
+      /* Left column (menu) */
+      .left {
+        flex: 35%;
+        padding: 15px 0;
+      }
+
+      .left h2 {
+        padding-left: 8px;
+      }
+      /* Style the search box */
+      #mySearch {
+        width: 100%;
+        font-size: 18px;
+        padding: 11px;
+        border: 1px solid #ddd;
+      }
+      
+      /* Style the navigation menu inside the left column */
+      #myMenu {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+      
+      #myMenu li a {
+        padding: 12px;
+        text-decoration: none;
+        color: black;
+        display: block
+      }
+      
+      #myMenu li a:hover {
+        background-color: #eee;
+      }
+       /* Style for the horizontal navigation bar */
+      #head{
+       
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: #333;
+         
+      }
+      #head li{
+        float: left;
+      }
+      #head li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+      #head li a:hover {
+          background-color: #111;
+        }
+        table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+  background-color:cornsilk;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+.btn-group{
+  margin-top: 50px;
+}
+/*for vertical button*/
+/* .mybtn button {
+  background-color: none; 
+  border: 1px solid green; 
+  padding: 10px 24px;
+  cursor: pointer;
+  width: 50%;
+  display:inline-block;
+  
+   flex-direction: column;
+} */
+.btn-group{
+  margin-left: 20px;
+  margin-bottom: 4px;
+}
+.btn-group button {
+  background-color: none; /* Green background */
+  border: 1px solid green; /* Green border */
+  color:none; /* White text */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  width: 50%; /* Set a width if needed */
+  display:inline-block;
+   /* Make the buttons appear below each other */
+   flex-direction: column;
+   margin-left: 50px;
+}
+
+.btn-group button:not(:last-child) {
+  border-bottom: none; /* Prevent double borders */
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+  background-color: #3e8e41;
+}
+      </style>
+  </head>
+  <body>
+   
+
+    
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <ul id="head">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        
+        <li style="float: right;"><a href="{% url 'logout' %}">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+    
+      <div class="left" style="background-color:#bbb;">
+        <h2>Menu</h2>
+        <input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search.." title="Type in a category">
+        <ul id="myMenu">
+          <li><a href="#">HTML</a></li>
+          <li><a href="#">CSS</a></li>
+          <li><a href="#">JavaScript</a></li>
+          <li><a href="#">PHP</a></li>
+          <li><a href="#">Python</a></li>
+          <li><a href="#">jQuery</a></li>
+          <li><a href="#">SQL</a></li>
+          <li><a href="#">Bootstrap</a></li>
+          <li><a href="#">Node.js</a></li>
+        </ul>
+
+    </div>
+
+    </div>
+    <div class="col-md-9">
+    
+     
+      
+      <h2 style="text-align: center;">Employee Details</h2>
+    
+      <table>
+       
+        <tr>
+          <th>Employee Name</th>
+          <th>Email</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+        
+        {%for n in contactdata%}
+        <tr>
+          <td>{{n.name}}</td>
+          <td>{{n.email}}</td>
+         <td><a href="edit/{{n.id}}" class="btn btn-primary">Edit</a></td>
+         <td><a href="delete/{{n.id}}" class="btn btn-danger">Delete</a></td>
+         <td></td>
+        </tr>
+        {%endfor%}
+      </table>
+      
+      <p>The Dog is not only an animal but also the best friend of the human being.
+         His existence in our family or home adds some extra joy in our life. 
+         Many people believe that the Dog is the best creation of God. 
+        They are not just an animal, but they hold a lot of importance in our life.
+        The Dog is not only an animal but also the best friend of the human being. 
+        His existence in our family or home adds some extra joy in our life. 
+        Many people believe that the Dog is the best creation of God.
+         They are not just an animal,
+         but they hold a lot of importance in our life.
+      </p>
+    </div>
+    
+   </div>
+
+  <div class="row">
+    <div class="col-md-3">
+     
+   <div class="col-md-8">
+   help
+
+   </div>
+    </div>
+  
+  
+  </div>
+
+  <div class="row">
+
+    <div class="col-sm-4 col-md-4">
+      HTML is the standard markup language for Web pages.
+
+      With HTML you can create your own Website.
+
+      HTML is easy to learn - You will enjoy it!
+
+    </div>
+    <div class="col-sm-8">
+      HTML is the standard markup language for Web pages.
+
+      With HTML you can create your own Website.
+
+      HTML is easy to learn - You will enjoy it!
+      HTML is the standard markup language for Web pages.
+
+      With HTML you can create your own Website.
+
+      HTML is easy to learn - You will enjoy it!
+    </div>
+  
+  
+  </div>
+</div>
+<script>
+  function myFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("mySearch");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myMenu");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+      a = li[i].getElementsByTagName("a")[0];
+      if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        li[i].style.display = "";
+      } else {
+        li[i].style.display = "none";
+      }
+    }
+  }
+  </script>
+  
+   
+
+
+
+
+
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
